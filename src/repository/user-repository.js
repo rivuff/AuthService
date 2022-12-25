@@ -27,12 +27,27 @@ class UserRepository{
         }
     }
 
+
     async getById(userId){
         try {
             const user = User.findByPk(userId,{
                 attributes:['email', 'id']
             });
             return user;
+        } catch (error) {
+            console.log("Unable to create user");
+            throw error;
+        }
+    }
+
+    async getByEmail(userEmail){
+        try {
+            const user = await User.findOne({
+                where:{
+                    email: userEmail
+                }
+            })
+            return user
         } catch (error) {
             console.log("Unable to create user");
             throw error;
