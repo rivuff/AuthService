@@ -54,12 +54,13 @@ class UserService{
             }
             
             return user.id;
-            
+
         } catch (error) {
             console.log("Something went wrong in the auth process");
             throw error;
         }
     }
+
 
     createToken(user){
         try {
@@ -84,6 +85,15 @@ class UserService{
     checkPassword(userInputPlainPassword, encryptedPassword) {
         try {
             return bcrypt.compareSync(userInputPlainPassword, encryptedPassword);
+        } catch (error) {
+            console.log("Something went wrong in password comparison");
+            throw error;
+        }
+    }
+
+    isAdmin(userId){
+        try {
+            return this.userRepository.isAdmin(userId)
         } catch (error) {
             console.log("Something went wrong in password comparison");
             throw error;

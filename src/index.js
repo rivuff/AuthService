@@ -20,12 +20,12 @@ const prepareAndStartServer = ()=>{
         console.log(`Server started at ${PORT}`);
         
         if(process.env.DB_SYNC){
-            db.sequelize.sync({ alter: true })
+            db.sequelize.sync({ alter: false })
         }
 
-        // const u1 = await User.findByPk(4);
-        // const r1 = await Role.findByPk(3);
-        //u1.addRole(r1)
+        // const u1 = await User.findByPk(3);
+        // const r1 = await Role.findByPk(1);
+        // u1.addRole(r1)
 
         //const service = new userService();
         // const newToken = service.createToken({email:'rivunaskar0@gmail.com', id:'1'});
